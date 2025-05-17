@@ -1,0 +1,101 @@
+.background-container {
+    background-image: url('https://imgix-prod.sgs.com/-/media/sgscorp/images/temporary/tree-held-by-hands-1600px.cdn.en-PH.1.png?fit=crop&crop=edges&auto=format&w=1200&h=630');
+    background-size: cover;
+    background-position: center;
+    /* background-attachment: fixed; // Crea un efecto de parallax, donde el contenido se desplaza sobre la imagen de fondo fija, añadiendo una sensación de profundidad*/
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .accordion-container {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+  
+  h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+  
+  .accordion-item {
+    margin-bottom: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .accordion-item.open {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .accordion-title {
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #34495e;
+    transition: background-color 0.3s ease;
+  }
+  
+  .accordion-title:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .accordion-icon {
+    font-size: 1.5rem;
+    color: #3498db;
+  }
+  
+  .accordion-content {
+    background-color: #ffffff;
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+  
+  .accordion-item.open .accordion-content {
+    max-height: 1000px;
+    padding: 1rem;
+  }
+  
+  .accordion-content p,
+  .accordion-content ul {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .function-list {
+    list-style-type: none;
+    padding-left: 0;
+  }

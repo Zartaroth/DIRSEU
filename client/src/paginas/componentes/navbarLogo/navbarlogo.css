@@ -1,0 +1,10 @@
+nav {
+    background-color: #1F2937; /* Gray-800 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  nav a, nav button {
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
