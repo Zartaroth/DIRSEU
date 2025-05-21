@@ -39,13 +39,13 @@ export default function UserForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-  
+
     try {
       if (!firstName || !lastName || !email || !password) {
         setErrorResponse("Todos los campos son requeridos");
         return;
       }
-  
+
       // Guardar los datos básicos del usuario sin el rol
       setUserData({
         firstName,
@@ -53,7 +53,7 @@ export default function UserForm() {
         email,
         password,
       });
-  
+
       // Redirigir al siguiente paso (selección de tipo de usuario)
       goTo("type");
     } catch (error) {

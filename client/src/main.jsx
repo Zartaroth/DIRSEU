@@ -5,13 +5,16 @@ import { HashRouter } from "react-router-dom";
 
 import App from "./App";
 import { AuthProvider } from "./context/AuthProvider";
+import { RegisterProvider } from "./context/Register_context";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HashRouter>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </HashRouter>
+    <AuthProvider>
+      <RegisterProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </RegisterProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

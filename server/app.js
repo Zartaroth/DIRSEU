@@ -1,9 +1,8 @@
 import express from 'express';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import cors from "cors";
 import path from 'path';
 
-import configs from './config/config.js';
 import indexRoutes from './routes/index.routes.js';
 import sgnin from './routes/login.routes.js';
 import signup from './routes/signup.routes.js';
@@ -46,9 +45,14 @@ import bachilleratoRoutes from './routes/bachillerato.routes.js';
 import tituloProfesionalRoutes from './routes/tituloProfesional.routes.js';
 import trabajoActualRoutes from './routes/trabajoActual.routes.js';
 
+const PORT = process.env.PORT || 4000;
+
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}
+));
 
 app.use(express.json());
 
@@ -101,8 +105,8 @@ app.use('/api/trabajos', trabajoActualRoutes);
 app.use('/api/table', Tables);
 
 
-app.listen(configs.PORT);
-console.log(`Server is running on port ${configs.PORT}.`); 
+app.listen(PORT);
+console.log(`Server is running on port ${PORT}.`);
 
-// Servir frontend en producción
-app.use('/dirseu/app', express.static(path.join(process.cwd(), 'client/dist')));
+// // Servir frontend en producción
+// app.use('/dirseu/app', express.static(path.join(process.cwd(), 'client/dist')));

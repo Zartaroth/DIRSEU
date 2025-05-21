@@ -1,9 +1,9 @@
 import React from "react";
 import { useAuth } from "./context/AuthProvider.jsx";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate, Outlet } from "react-router-dom";
 
-import './styles/global.css';
+import "./styles/global.css";
 
 import Inicio from "./paginas/Inicio/Inicio.jsx";
 import DFormativo from "./paginas/DFormativo/DFormativo.jsx";
@@ -94,19 +94,19 @@ export default function App() {
   const { isAuthenticated } = useAuth();
 
   return (
-    <RegisterProvider>
+    <>
       <Routes>
         {/* Componente Inicio antes de login */}
         <Route path="/" element={<Inicio />} />
+        <Route path="/login" element={<SignIn />} />
         <Route path="/Desarrollo-Formativo" element={<DFormativo />} />
         <Route path="/Desarrollo-Sostenible" element={<DSostenible />} />
         <Route path="/Extension-Universitaria" element={<ExtensionU />} />
         <Route path="/SeguimientoAlEgresado" element={<SEgresado />} />
-        <Route path="/login" element={<SignIn />} />
 
         <Route path="register" element={<SignUp />}>
           <Route path="" element={<UserForm />} />
-          <Route path="type" element={<TypeUserTab />} >
+          <Route path="type" element={<TypeUserTab />}>
             <Route path="" element={<EgresadoForm />} />
             <Route path="estudiante" element={<StudentForm />} />
             <Route path="docente" element={<TeacherForm />} />
@@ -130,45 +130,79 @@ export default function App() {
             <Route path="cambiar-password" element={<ChangePassword />} />
             <Route path="CV-digital" element={<CV />} />
             <Route path="Actualizacion_datos" element={<SegEg />} />
-
           </Route>
-          <Route path="/Home" element={<Dashboard />} >
-            <Route path="modules" element={<Modules />} >
+          <Route path="/Home" element={<Dashboard />}>
+            <Route path="modules" element={<Modules />}>
               <Route path="list/:table" element={<ListModule />} />
               <Route path="form/:table/:id" element={<DetailsModules />} />
-            </Route>              
+            </Route>
             {/* Rutas para los Coordinadores */}
-            <Route path="coordinadores" element={
+            <Route
+              path="coordinadores"
+              element={
                 <ProtectedRoutes allowedRoles={["admin", "coordinador"]}>
                   <Outlet />
                 </ProtectedRoutes>
               }
             >
-              <Route path="DesarrolloFormativo" element={<AdministrarDFormativo />}>
+              <Route
+                path="DesarrolloFormativo"
+                element={<AdministrarDFormativo />}
+              >
                 <Route path="verTalleres" element={<TallerPage />} />
                 <Route path="verInscritos" element={<VerInscritosTalleres />} />
                 <Route path="verEventos" element={<EventoPage />} />
               </Route>
-              <Route path="DesarrolloSostenible" element={<AdministrarDSostenible />} >
-                <Route path="ver-eventos-calendario" element={<VerCalendarioAmbiental />} />
+              <Route
+                path="DesarrolloSostenible"
+                element={<AdministrarDSostenible />}
+              >
+                <Route
+                  path="ver-eventos-calendario"
+                  element={<VerCalendarioAmbiental />}
+                />
                 <Route path="verEventos" element={<EventoPage />} />
               </Route>
-              <Route path="ExtensionUniversitaria" element={<AdministrarEUniversitaria />}>
+              <Route
+                path="ExtensionUniversitaria"
+                element={<AdministrarEUniversitaria />}
+              >
                 <Route path="verVoluntariados" element={<VoluntariadoPage />} />
-                <Route path="verInscritos" element={<VerInscritosVoluntariados />} />
+                <Route
+                  path="verInscritos"
+                  element={<VerInscritosVoluntariados />}
+                />
                 <Route path="verEventos" element={<EventoPage />} />
               </Route>
-              <Route path="SeguimientoEgresado" element={<AdministrarSEgresado />}>
+              <Route
+                path="SeguimientoEgresado"
+                element={<AdministrarSEgresado />}
+              >
                 <Route path="verOfertas" element={<OfertaLaboralPage />} />
-                <Route path="verCapacitaciones" element={<CapacitacionPage />} />
-                <Route path="verInscritos" element={<VerInscritosCapacitaciones />} />
+                <Route
+                  path="verCapacitaciones"
+                  element={<CapacitacionPage />}
+                />
+                <Route
+                  path="verInscritos"
+                  element={<VerInscritosCapacitaciones />}
+                />
                 <Route path="userEmForm" element={<UserFormEmpleador />} />
-                <Route path="agregarEmpleador" element={<CreateUserEmpleador />} />
+                <Route
+                  path="agregarEmpleador"
+                  element={<CreateUserEmpleador />}
+                />
                 <Route path="verEventos" element={<EventoPage />} />
                 {/* Rutas para Encuestas */}
                 <Route path="ver-encuestas" element={<SurveyList />} />
-                <Route path="encuesta/:encuestaId" element={<PreguntasPorEncuesta />} />
-                <Route path="reporte/:encuestaId" element={<ReportesEncuesta />} />
+                <Route
+                  path="encuesta/:encuestaId"
+                  element={<PreguntasPorEncuesta />}
+                />
+                <Route
+                  path="reporte/:encuestaId"
+                  element={<ReportesEncuesta />}
+                />
               </Route>
             </Route>
             {/* Rutas del Empleador */}
@@ -184,19 +218,28 @@ export default function App() {
             <Route path="instructor" element={<PanelInstructores />}>
               <Route path="talleres" element={<TalleresInstructores />} />
               <Route path="Ver-Sesiones/:tallerId" element={<VerSesiones />} />
-              <Route path="reporte/:tallerId/sesion/:sesionId" element={<ReportesAsistenciaSesion />} />
-              <Route path="Reporte/taller/:tallerId" element={<ReportePortaller />} />
+              <Route
+                path="reporte/:tallerId/sesion/:sesionId"
+                element={<ReportesAsistenciaSesion />}
+              />
+              <Route
+                path="Reporte/taller/:tallerId"
+                element={<ReportePortaller />}
+              />
             </Route>
-            <Route path="analytics" element={
-              <ProtectedRoutes allowedRoles={["admin"]}>
-                <Analytics />
-              </ProtectedRoutes>
-            } />
+            <Route
+              path="analytics"
+              element={
+                <ProtectedRoutes allowedRoles={["admin"]}>
+                  <Analytics />
+                </ProtectedRoutes>
+              }
+            />
             <Route path="userInfo" element={<UserSettings />} />
             <Route path="cambiar-password" element={<ChangePassword />} />
           </Route>
         </Route>
       </Routes>
-    </RegisterProvider>
+    </>
   );
 }
